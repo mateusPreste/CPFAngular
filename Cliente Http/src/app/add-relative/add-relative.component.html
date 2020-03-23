@@ -1,0 +1,52 @@
+<h3>Adicionar Dependente</h3>
+<div [hidden]="submitted">
+    <form #addCustomerForm="ngForm">      
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name"  placeholder="Insira o nome do usuário" required
+        [(ngModel)]="relative.name" name="name" #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+            Nome é necessário
+        </div>
+      </div>
+
+      
+      <div class="form-group">
+        <label for="age">Idade</label>
+        <input type="number" class="form-control" id="age" 
+        placeholder="Insira a idade do dependente"
+        required
+        [(ngModel)]="relative.age" name="age" #age="ngModel">
+        <div [hidden]="age.valid || age.pristine"
+             class="alert alert-danger">
+            Idade é necessário
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="user">Usuário</label>
+        <select type="user" class="form-control" id="user"
+        placeholder="Insira o usuário"
+        required
+        [(ngModel)]="relative.user" name="user" #user="ngModel">
+          <option *ngFor="let x of customers">{{x.name}}</option>
+        </select>
+      </div>
+
+      
+
+      <div class="btn-group btn-group-sm">
+      	<button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+      	<button type="button" class="btn btn-dark" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">Adicionar</button>
+      </div>
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+  <p>Enviado com sucesso! -> <span class="badge badge-light">{{relative.name}}</span></p>
+	<div class="btn-group btn-group-sm">
+    	<button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+    	<button type="button" class="btn btn-dark" (click)="newCustomer(); addCustomerForm.reset()">Continuar</button>
+    </div>
+</div>

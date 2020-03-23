@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">  
+      <h1>Crud</h1>
+      <ul class="nav justify-content-center">
+          <li class="nav-item">
+              <a routerLink="customers" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Usuários</a> 
+          </li>
+          <li class="nav-item">
+              <a routerLink="customer/add" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Criar Usuário</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="relative/add" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Criar Dependente</a>
+        </li>
+      </ul>
+      <hr>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

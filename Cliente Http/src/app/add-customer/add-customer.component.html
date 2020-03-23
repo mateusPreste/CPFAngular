@@ -1,0 +1,38 @@
+<h3>Adicionar Usuário</h3>
+<div [hidden]="submitted">
+    <form #addCustomerForm="ngForm">
+
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input type="text" class="form-control" id="cpf" placeholder="Insira o CPF do usuário" required
+        [(ngModel)]="customer.cpf" name="cpf" #cpf="ngModel">
+        <div [hidden]="cpfValid() || cpf.pristine"
+             class="alert alert-danger">
+            CPF inválido
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name"  placeholder="Insira o nome do usuário" required
+        [(ngModel)]="customer.name" name="name" #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+            Nome é necessário
+        </div>
+      </div>
+      
+      <div class="btn-group btn-group-sm">
+      	<button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+      	<button type="button" class="btn btn-dark" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">Adicionar</button>
+      </div>
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+  <p>Enviado com sucesso! -> <span class="badge badge-light">{{customer.name}}</span></p>
+	<div class="btn-group btn-group-sm">
+    	<button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+    	<button type="button" class="btn btn-dark" (click)="newCustomer(); addCustomerForm.reset()">Continuar</button>
+    </div>
+</div>
